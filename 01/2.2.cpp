@@ -2,13 +2,10 @@
 
 int main ()
 {
-    long double kf=1,b1=1,b2,e = 2.7182818284;
-    b2 = (e+1.0/e)/2;
-    for(int i = 1;i<100000;i+=2){
-        kf = kf/i/(i+1);
-        b1+=kf;
-
+    long double k=1,b1=1,b2,e = 2.7182818284;
+    for(long double i = 1.0;i<10000000.0;i+=1.0){
+        b1*=(4*i*i)/(4*i*i-1.0);
     }
-    cout<<b1<<"\t"<<b2<<endl;
+    cout<<b1<<"\t"<<3.1415/2.0<<endl;
     return 0;
 }
