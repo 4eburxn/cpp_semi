@@ -26,12 +26,12 @@ std::vector<Point> read(std::string const& filename){
         return std::vector<Point>();
     }
     return std::vector<Point>(std::istream_iterator<Point>(ifs),
-                              std::istream_iterator<Point>());
+                              std::istream_iterator<Point>()); // Считывание ifs до eof(std::istream_iterator<Point>())
 }
 
 struct Coeff{
     long double value,
-                delta;
+                delta; // значение + "ошибка"
     Coeff(long double v,long double d):value{v}, delta{d}{};
 
 };
@@ -51,7 +51,7 @@ std::tuple<Coeff,Coeff> least_square(std::vector<Point> const& points){
     x2_ave /=N;
     y_ave  /=N;
     xy_ave /=N;
-    long double k = (xy_ave-x_ave*y_ave)/(x2_ave - x_ave*x_ave);
+    long double k = (xy_ave-x_ave*y_ave)/(x2_ave - x_ave*x_ave); // по формуле
     long double b = y_ave-k*x_ave;
 
     return std::tuple<Coeff,Coeff>(Coeff(k,0.),Coeff(b,0.));
