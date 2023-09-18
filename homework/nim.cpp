@@ -1,6 +1,23 @@
 #include<iostream>
-#include<set>
+#include<string>
 #include<vector>
+
+bool ask_y_n(){ // return bool if y
+    std::cout << "will you play first?\n[y/n]:";
+    std::string y_n;
+    while(true){
+        std::cin >> y_n;
+        if(y_n == "y" || y_n == "Y"){
+            return true;
+        }
+        else if(y_n == "n" || y_n == "N"){
+            return false;
+        }
+        else{
+            std::cout << "samesing vrong vith inpoot\nwill you play first?\n[y/n]:";
+        }
+    }
+}
 
 int current_sum(std::vector<int> const& a){
     int rt=0;
@@ -34,80 +51,74 @@ void clear() {
 }
 
 int main(){
-    std::vector<int> gm;
+    std::vector<int> game_state;
     char y_n; 
-    int N = -1,a,b;
-    init_game(gm, true);
+    int cur_move ,a,b;
+    init_game(game_state, true);
     bool flag = false;
     clear();
     std::cout<<"welcome to the nim game"<<std::endl;
-    std::cout << "will you play first?\n[y/n]:";
-    while(N==-1){
-        std::cin >> y_n;
-        if(y_n == 'y' || y_n == 'Y'){
-            N = 1;
-        }
-        else if(y_n == 'n' || y_n == 'N'){
-            N=0;
-        }
-        else{
-            std::cout << "samesing vrong vith inpoot\nwill you play first?\n[y/n]:";
-        }
+    if(ask_y_n()){    // who makes first move
+        cur_move = 1; // men
     }
+    else{
+        cur_move = 0; // program 
+    }
+    
     clear();
-    while(gm.size() != 0){
+    while(game_state.size() != 0){
         
-        if(N%2 == 1){
+        if(cur_move%2 == 1){
             if(flag){
                 clear();
                 std::cout<<"самсынг вронг\n";
             }
             std::cout << "\nthe current state of the game:\n";
-            print_cur_state(gm);
+            print_cur_state(game_state);
             std::cout << "Your turn\nnum_of_row   N\n";
             std::cin >> a>>b;
-            if(gm[a-1]<b || a<0 || a>gm.size() || b<0){
+            if(game_state[a-1]<b || a<0 || a>game_state.size() || b<0){
                 flag = true;
             }
             else{
-                gm[a-1]-=b;
-                N+=1;
+                game_state[a-1]-=b;
+                cur_move+=1;
                 flag = false;
             }
         }
         else{
             flag = true;
             std::cout << "My turn\nnum_of_row   N\n";
-            int l = current_sum(gm);
+            int l = current_sum(game_state);
             
-            if(l >0 ){for(size_t i =0;i<gm.size();i++){
-                if(gm[i]^l < gm[i]){
-                    std::cout<<i+1 <<"\t     " << (gm[i]-gm[i]^l) <<"\n";
-                    gm[i]=gm[i]^l;
-                    std::cout<<current_sum(gm)<<"\n\n";
+            if(l >0 ){for(size_t i =0;i<game_state.size();i++){
+                if(game_state[i]^l < game_state[i]){
+                    std::cout<<i+1 <<"\t     " << (game_state[i]-game_state[i]^l) <<"\n";
+                    game_state[i]=game_state[i]^l;
+                    std::cout<<current_sum(game_state)<<"\n\n";
                     flag = false;
                     break;
                 }
             }}
             if(flag){
-                for(size_t i = 0; i<gm.size();i++){
-                    if(gm[i]>0){
+                for(size_t i = 0; i<game_state.size();i++){
+                    if(game_state[i]>0){
                         std::cout<<i+1 <<"\t" << 1<<"\n";
-                        gm[i]-=1;
+                        game_state[i]-=1;
                         break;
                     }
                 }
             }
-            N+=1;
+            cur_move+=1;
         }
-        if(N%2==0){clear();}
+        if(cur_move%2==0){clear();}
 
         b = 0;
-        for(auto i:gm){
+        for(auto i:game_state){
             b+=i;
         }
         if(b == 0){
-            if(N%2){
+            if(cur_move%2){
                 std::cout<<"YOU WIN!"<<std::endl;
             }
             else{
