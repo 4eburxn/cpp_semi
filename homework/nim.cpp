@@ -53,8 +53,6 @@ int current_sum(std::vector<int> const& a){
 void init_game(std::vector<int>& game_start_state, bool is_default_game){
     if(is_default_game){
         game_start_state = std::vector<int>{2,8,13};
-        std::cout <<"\nthe start state of the game:\n";
-        print_cur_state(game_start_state);
         return;
     }
     else{
@@ -62,9 +60,9 @@ void init_game(std::vector<int>& game_start_state, bool is_default_game){
         std::string operation;
         std::string msg = "use num_of_row<0 to exit\n"\
                           "'<num_of_row> [+/-/=] <amount>' or '0 add' to add row\n";
-        
+        clear();
         while(true){
-            clear();
+            
             std::cout<<"the current state of the game:\n";
             print_cur_state(game_start_state);
             std::cout<< "\n" <<msg;
@@ -82,6 +80,7 @@ void init_game(std::vector<int>& game_start_state, bool is_default_game){
             }
 
             std::cin >> operation;
+            clear();
             if(num_of_row == 0 && operation == "add"){
                 game_start_state.push_back(0);
             }
@@ -110,7 +109,6 @@ void init_game(std::vector<int>& game_start_state, bool is_default_game){
 
 int main(){
     std::vector<int> game_state;
-    char y_n; 
     int cur_move ,a,b;
     
     bool flag = false;
@@ -132,9 +130,16 @@ int main(){
     }
 
     clear();
+    if(cur_move==0){
+        std::cout << "the start state of the game:\n";
+        print_cur_state(game_state);
+        std::cout<<std::endl;
+    }
+    
     while(game_state.size() != 0){
         
         if(cur_move%2 == 1){
+            
             if(flag){
                 clear();
                 std::cout<<"incorrect input\n";
@@ -163,7 +168,7 @@ int main(){
                     if((game_state[i]^l) < game_state[i]){
                         std::cout<<i+1 <<"\t     " << (game_state[i]-(game_state[i]^l)) <<"\n";
                         game_state[i]=(game_state[i]^l);
-                        std::cout<<current_sum(game_state)<<"\n\n";
+                        std::cout<<"\n\n";
                         flag = false;
                         break;
                     }
@@ -180,7 +185,7 @@ int main(){
             }
             cur_move+=1;
         }
-        if(cur_move%2==0){clear();}
+        if(cur_move%2==0 && cur_move>1){clear();}
 
         b = 0;
         for(auto i:game_state){
