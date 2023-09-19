@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 void clear() {
-    std::cout << "\x1B[2J\x1B[H"; // only in *nix
+    std::cout << "\x1B[2J\x1B[H"; //  *nix
     system("cls");
 }
 
@@ -22,7 +22,7 @@ bool ask_y_n(std::string question){ // return bool if y
             return false;
         }
         else{
-            std::cout << "\n\nsamesing vrong vith inpoot\n"<<question;
+            std::cout << "\n\nincorrect input\n";
         }
         
     }
@@ -71,9 +71,9 @@ void init_game(std::vector<int>& game_start_state, bool is_default_game){
             
             std::cin >> num_of_row;
 
-            if(num_of_row<0 && ask_y_n("do you want to exit edit mode?")){ // exit mode
+            if(num_of_row<0 && ask_y_n("do you want to exit edit mode?\n[y/n]")){ // exit mode
                 if(game_start_state.size() == 0\
-                   && ask_y_n("the playground is empty. use default values?"))
+                   && ask_y_n("the playground is empty. use default values?\n[y/n]"))
                 {
                     init_game(game_start_state,true);
                     return;
