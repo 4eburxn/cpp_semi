@@ -5,7 +5,7 @@
 
 void clear() {
     std::cout << "\x1B[2J\x1B[H"; //  *nix
-    system("cls");
+    //system("cls");
 }
 
 
@@ -62,13 +62,13 @@ void init_game(std::vector<int>& game_start_state, bool is_default_game){
                           "'<num_of_row> [+/-/=] <amount>' or '0 add' to add row\n";
         clear();
         while(true){
-            
+            clear();
             std::cout<<"the current state of the game:\n";
             print_cur_state(game_start_state);
-            std::cout<< "\n" <<msg;
+            std::cout<< "\n" << msg;
             
             std::cin >> num_of_row;
-
+            
             if(num_of_row<0 && ask_y_n("do you want to exit edit mode?\n[y/n]")){ // exit mode
                 if(game_start_state.size() == 0\
                    && ask_y_n("the playground is empty. use default values?\n[y/n]"))
@@ -80,7 +80,7 @@ void init_game(std::vector<int>& game_start_state, bool is_default_game){
             }
 
             std::cin >> operation;
-            clear();
+            
             if(num_of_row == 0 && operation == "add"){
                 game_start_state.push_back(0);
             }
@@ -128,7 +128,6 @@ int main(){
     else{
         init_game(game_state, true);
     }
-
     clear();
     if(cur_move==0){
         std::cout << "the start state of the game:\n";
@@ -148,7 +147,7 @@ int main(){
             print_cur_state(game_state);
             std::cout << "Your turn\n"
                       << "num_of_row   N\n";
-            std::cin >> a>>b;
+            std::cin >> a >> b;
             if(game_state[a-1]<b || a<0 || a>game_state.size() || b<0){
                 flag = true;
             }
