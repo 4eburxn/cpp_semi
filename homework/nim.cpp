@@ -4,8 +4,8 @@
 #include <stdlib.h>
 
 void clear() {
-    std::cout << "\x1B[2J\x1B[H"; //  *nix
-    //system("cls");
+    //std::cout << "\x1B[2J\x1B[H"; //  *nix
+    system("cls");
 }
 
 
