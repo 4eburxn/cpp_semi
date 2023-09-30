@@ -4,12 +4,12 @@
 #include <stdlib.h>
 
 void clear() {
-    //std::cout << "\x1B[2J\x1B[H"; //  *nix
-    system("cls");
+    std::cout << "\x1B[2J\x1B[H"; //  *nix
+    //system("cls");
 }
 
 
-bool ask_y_n(std::string question){ // return bool if y
+bool ask_y_n(std::string question){ // return true if y
     std::string y_n;
     clear();
     while(true){
@@ -113,8 +113,6 @@ int main(){
     
     bool flag = false;
     clear();
-    std::cout<<"welcome to the nim game"<<std::endl;
-    
     if(ask_y_n("will you play first?\n[y/n]:")){    // who makes first move
         cur_move = 1; // human
     }
