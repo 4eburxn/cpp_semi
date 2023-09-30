@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/zeroes.exe.dir/zeros.cpp.o -o /home/iven/Documents/mipt/cpp_semi/homework/zeros_w_cmake/bin/zeroes.exe 

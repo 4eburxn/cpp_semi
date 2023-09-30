@@ -1,0 +1,3 @@
+/home/iven/Documents/mipt/cpp_semi/homework/zeros_w_cmake/build/CMakeFiles/zeroes.exe.dir
+/home/iven/Documents/mipt/cpp_semi/homework/zeros_w_cmake/build/CMakeFiles/edit_cache.dir
+/home/iven/Documents/mipt/cpp_semi/homework/zeros_w_cmake/build/CMakeFiles/rebuild_cache.dir
