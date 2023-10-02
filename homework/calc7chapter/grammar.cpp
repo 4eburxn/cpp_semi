@@ -14,8 +14,7 @@
     const string result = "= ";
     const string declkey = "let";
 #endif
-
-Token_stream ts;
+extern Token_stream ts;
 double expression ();
 double get_value (string s);
 

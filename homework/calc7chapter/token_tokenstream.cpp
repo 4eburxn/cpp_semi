@@ -131,5 +131,4 @@ void Token_stream::ignore(char c)
 
 
 Token_stream ts;
-
 void clean_up_mess () { ts.ignore(print); }

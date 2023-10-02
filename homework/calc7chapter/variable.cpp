@@ -4,8 +4,9 @@
 #endif
 #ifndef TOKEN_TOKENSTREAM
     #define TOKEN_TOKENSTREAM
-    #include<token_tokenstream.h>
+    
 #endif
+#include<token_tokenstream.h>
 #ifndef CONSTANTS
     #define CONSTANTS
     constexpr char quit = 'q';
@@ -73,7 +74,7 @@ double define_name (string var, double val)
 }
 
 double expression ();
-Token_stream ts;
+extern Token_stream ts;
 double declaration ()
 {
   Token t = ts.get();

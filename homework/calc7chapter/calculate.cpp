@@ -16,7 +16,7 @@
 #endif
 
 double statement();
-Token_stream ts;
+extern Token_stream ts;
 void clean_up_mess();
 
 void calculate ()

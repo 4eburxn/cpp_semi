@@ -2,8 +2,12 @@
     #define STD_LIB_FACILITIES
     #include<std_lib_facilities.h>
 #endif
+#ifndef TOKEN_TOKENSTREAM
+    #define TOKEN_TOKENSTREAM
+    #include<token_tokenstream.h>
+#endif
 
-
+extern Token_stream ts;
 struct Variable
 {
   string name;
