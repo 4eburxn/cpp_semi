@@ -1,12 +1,14 @@
+#include<variable.h>
+
 #ifndef STD_LIB_FACILITIES
     #define STD_LIB_FACILITIES
     #include<std_lib_facilities.h>
 #endif
 #ifndef TOKEN_TOKENSTREAM
     #define TOKEN_TOKENSTREAM
-    
+    #include<token_tokenstream.h>
 #endif
-#include<token_tokenstream.h>
+
 #ifndef CONSTANTS
     #define CONSTANTS
     constexpr char quit = 'q';
@@ -21,13 +23,7 @@
 #endif
 
 
-struct Variable
-{
-  string name;
-  double value;
-
-  Variable(string n, double v) : name{n}, value{v} {}
-};
+Variable::Variable(string n, double v) : name{n}, value{v} {}
 
 vector<Variable> var_table; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

@@ -18,8 +18,9 @@ struct Token
 
 class Token_stream
 {
-  bool full;
-  Token buffer;
+  bool full{false};
+  Token buffer{'\0'};
+
 
 public:
   Token_stream();

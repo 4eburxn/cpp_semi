@@ -1,3 +1,5 @@
+#include<token_tokenstream.h>
+
 #ifndef STD_LIB_FACILITIES
     #define STD_LIB_FACILITIES
     #include<std_lib_facilities.h>
@@ -18,33 +20,13 @@
 
 
 
-struct Token
-{
-  char kind;
-  double value;
-  string name;
+Token::Token(char ch) : kind{ch}, value{0} {}
 
-  Token(char ch) : kind{ch}, value{0} {}
+Token::Token(char ch, string s) : kind{ch}, name{s} {}
 
-  Token(char ch, string s) : kind{ch}, name{s} {}
+Token::Token(char ch, double val) : kind{ch}, value{val} {}
 
-  Token(char ch, double val) : kind{ch}, value{val} {}
-};
-
-class Token_stream
-{
-  bool full{false};
-  Token buffer{'\0'};
-
-public:
-  Token_stream() {}
-
-  Token get ();
-  void putback (Token t);
-
-  void ignore (char);
-};
-
+Token_stream::Token_stream() {}
 void Token_stream::putback(Token t)
 {
   if (full)

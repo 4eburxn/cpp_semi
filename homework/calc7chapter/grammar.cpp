@@ -1,3 +1,5 @@
+#include"grammar.h"
+
 #ifndef TOKEN_TOKENSTREAM
     #define TOKEN_TOKENSTREAM
     #include<token_tokenstream.h>
@@ -9,7 +11,6 @@
     constexpr char number = '8';
     constexpr char name = 'a';
     constexpr char let = 'L';
-
     const string prompt = "> ";
     const string result = "= ";
     const string declkey = "let";

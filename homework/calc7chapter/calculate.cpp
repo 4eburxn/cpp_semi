@@ -1,3 +1,4 @@
+#include<calculate.h>
 #ifndef TOKEN_TOKENSTREAM
     #define TOKEN_TOKENSTREAM
     #include<token_tokenstream.h>

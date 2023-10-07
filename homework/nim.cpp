@@ -14,31 +14,31 @@ void clear() {
 }
 
 bool ask_y_n(std::string question){ // return true if y
-    std::string y_n;
+    std::string yes_no;
     clear();
     while(true){
         std::cout << question;
-        std::cin >> y_n;
-        if(y_n == "y" || y_n == "Y"){
+        std::cin >> yes_no;
+        if(yes_no == "y" || yes_no == "Y"){
             return true;
         }
-        else if(y_n == "n" || y_n == "N"){
+        else if(yes_no == "n" || yes_no == "N"){
             return false;
         }
         else{
-            std::cout <<y_n<< "\n\nincorrect input\n";
+            std::cout <<yes_no<< "\n\nincorrect input\n";
         }
         
     }
 }
 
 void print_cur_state(std::vector<int>& a){
-    int b = 0;
+    int num_of_the_row = 0;
     if(a.size() == 0){
         std::cout<<"---the playground is empty---" <<std::endl;
     }
     for(auto& i:a){
-        std::cout<<++b<<"("<<i<<")"<<"\t";
+        std::cout<<++num_of_the_row<<"("<<i<<")"<<"\t";
         for(int j = i; j>0;j--){
             std::cout<<"◉";
         }

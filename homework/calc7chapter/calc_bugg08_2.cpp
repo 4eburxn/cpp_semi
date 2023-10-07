@@ -20,6 +20,7 @@
 #include<grammar.h>
 #include<calculate.h>
 
+
 #ifndef CONSTANTS
     #define CONSTANTS
     constexpr char quit = 'q';
@@ -27,7 +28,6 @@
     constexpr char number = '8';
     constexpr char name = 'a';
     constexpr char let = 'L';
-
     const string prompt = "> ";
     const string result = "= ";
     const string declkey = "let";
