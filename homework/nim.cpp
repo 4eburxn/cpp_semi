@@ -26,12 +26,14 @@ bool ask_y_n(std::string question){ // return true if y
             return false;
         }
         else{
-            std::cout <<yes_no<< "\n\nincorrect input\n";
+            std::cout <<"\n\nincorrect input\n";
         }
         
     }
 }
 
+/// @brief 
+/// @param a 
 void print_cur_state(std::vector<int>& a){
     int num_of_the_row = 0;
     if(a.size() == 0){
@@ -46,6 +48,9 @@ void print_cur_state(std::vector<int>& a){
     }
 }
 
+/// @brief 
+/// @param a 
+/// @return 
 int current_sum(std::vector<int> const& a){
     int rt=0;
     for(auto& i:a){
@@ -54,8 +59,12 @@ int current_sum(std::vector<int> const& a){
     return rt;
 }
 
+/// @brief 
+/// @param s 
+/// @return 
 int int_from_string(std::string s){
-    int k = 1, return_value=0;
+    int k = 1;
+    int return_value = 0;
     for(auto i:s){
         return_value+=i*k;
         k=k*k+1;
@@ -97,17 +106,18 @@ void std_cin_failure_clear(){
             }
 }
 
+const std::vector<int> default_v = std::vector<int>{2,8,13};
+
 void init_game(std::vector<int>& game_start_state, bool is_default_game){
     if(is_default_game){
-        game_start_state = std::vector<int>{2,8,13};
+        game_start_state = default_v;
         return;
     }
     else{
         int num_of_row, amount;
-        if(!std::cin){std::cout<<"sdf";std::cin.ignore(1);}
         std::string operation,
                     message = "use num_of_row<0 to exit\n"\
-                          "'<num_of_row> [+/-/=] <amount>' or '0 add' to add row\n";
+                          "\"<num_of_row> [+/-/=] <amount>\" or \"0 add\" to add row\n";
         clear();
         while(true){
             clear();
@@ -118,13 +128,17 @@ void init_game(std::vector<int>& game_start_state, bool is_default_game){
             std::cout<< "\n" << message;
             
             std::cin >> num_of_row;
-            if(!std::cin){continue;}
+            if(!std::cin){
+                continue;
+            }
 
-            if(num_of_row<0 && ask_y_n("do you want to exit edit mode?\n[y/n]")){ // exit mode
-                if(game_start_state.size() == 0 && ask_y_n("the playground is empty. \
-                                                            use default values?\n[y/n]")){
+            if(num_of_row < 0 
+            && ask_y_n("do you want to exit edit mode?\n[y/n]")) {
+                // exit mode
+                if(game_start_state.size() == 0 
+                && ask_y_n("the playground is empty.\n"\
+                "use default values?\n[y/n]")) {
                     init_game(game_start_state,true);
-                    return;
                 }
                 return;
             }

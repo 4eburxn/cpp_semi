@@ -18,5 +18,7 @@ include_directories("./")
 target_link_libraries(variable token_tokenstream grammar)
 target_link_libraries(calc calculate grammar token_tokenstream variable)
 
+
+
 #enable_testing()
 #add_test(test1 "../tests/tests.sh")
